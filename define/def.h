@@ -21,4 +21,3 @@ void run_time(int *p_y,int *p_x, char *text,int *ana_stru);
 void move_cur(int dir, int *p_y, int *p_x, int *ana_stru);
 
 void analysis_text(char *text,int *ana_stru);
-

@@ -1,6 +1,14 @@
-#include "def.h"
-#include "analysis_text.c"
-#include "runtime.c"
+//include define
+#include "define/def.h"
+
+//include functions
+#include "func/analysis_text.c"
+#include "func/runtime.c"
+#include "func/display.c"
+#include "func/initw.c"
+#include "func/readtext.c"
+#include "func/test_text.c"
+
 
 //main function
 int main(int argc, char *argv[]){
@@ -54,92 +62,4 @@ int main(int argc, char *argv[]){
 	free(text);
 	free(ana_stru);
 	return 0;
-}
-
-
-void initw(){
-	initscr();
-	raw();
-	noecho();
-	curs_set(1);
-}
-
-char * readtext(char *name,int *numb){
-	char *s;
-	FILE *f;
-	int i=0;
-	int num;
-	f=fopen(name,"r+");
-	for(;fgetc(f)!=EOF;){
-		i++;
-	}
-	num=i;
-	fclose(f);
-	f=fopen(name,"r+");
-	s=(char *)malloc(sizeof(char)*(num+1));
-	for(i=0;i<num;i++){
-		s[i]=fgetc(f);
-	}
-	s[i]='\0';
-	fclose(f);
-	*numb=num;
-	return s;
-}
-
-
-
-
-void display(char *text, char *name){
-	move(0,0);
-	printw("%s",text);
-	move(LINES_EXP,0);
-	clrtoeol();
-	move((LINES-1),0);
-	clrtoeol();
-	move(LINES_EXP,0);
-	printw("file name: %s",name);
-	move(0,0);
-	refresh();
-}
-
-int test_text(char *name){
-	FILE *f;
-	f=fopen(name,"r+");
-	if(f == NULL){
-		f=fopen(name,"w+");
-		fclose(f);
-		return 0;
-	}
-	else{
-		fclose(f);
-		return 1;
-	}
-}
-
-
-
-void move_cur(int dir, int *p_y, int *p_x, int *ana_stru){
-	if(dir==1 && (*p_y)!=0){
-		*p_y=*p_y-1;
-	}
-	if(dir==2 && (*p_y)<(LINES_EXP-1)){
-		*p_y=*p_y+1;
-		if(*(ana_stru+(*p_y))==0){
-			*p_x=0;
-		}
-		else if(*(ana_stru+(*p_y))<(*p_x+1)){
-			*p_y=*p_y-1;
-		}
-	}
-	if(dir==3 && (*p_x)!=0){
-		*p_x=*p_x-1;
-	}
-	if(dir==4){
-		*p_x=*p_x+1;
-		if(*(ana_stru+(*p_y))<=*p_x){
-			*p_x=*p_x-1;
-		}
-	}
-	move(*p_y,*p_x);
-	refresh();
 }

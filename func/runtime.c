@@ -1,3 +1,6 @@
+void run_time(int *p_y, int *p_x, char *text,int *ana_stru){
+	commond(p_y,p_x,ana_stru);
+}
 
 void commond(int *p_y,int *p_x, int *ana_stru){
 	int a;
@@ -61,6 +64,28 @@ void commond(int *p_y,int *p_x, int *ana_stru){
 	}
 }
 
-void run_time(int *p_y, int *p_x, char *text,int *ana_stru){
-	commond(p_y,p_x,ana_stru);
+void move_cur(int dir, int *p_y, int *p_x, int *ana_stru){
+	if(dir==1 && (*p_y)!=0){
+		*p_y=*p_y-1;
+	}
+	if(dir==2 && (*p_y)<(LINES_EXP-1)){
+		*p_y=*p_y+1;
+		if(*(ana_stru+(*p_y))==0){
+			*p_x=0;
+		}
+		else if(*(ana_stru+(*p_y))<(*p_x+1)){
+			*p_y=*p_y-1;
+		}
+	}
+	if(dir==3 && (*p_x)!=0){
+		*p_x=*p_x-1;
+	}
+	if(dir==4){
+		*p_x=*p_x+1;
+		if(*(ana_stru+(*p_y))<=*p_x){
+			*p_x=*p_x-1;
+		}
+	}
+	move(*p_y,*p_x);
+	refresh();
 }
