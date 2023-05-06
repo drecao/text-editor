@@ -1,7 +1,3 @@
-#include <curses.h>
-#include <stdlib.h>
-#include <stdio.h>
-
 #include "def.h"
 #include "analysis_text.c"
 

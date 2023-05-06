@@ -1,3 +1,7 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <curses.h>
+
 //define utrl int LINES_EXP
 int LINES_EXP;
 
