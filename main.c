@@ -3,10 +3,10 @@
 
 //include functions
 #include "func/analysis_text.c"
-#include "func/runtime.c"
 #include "func/display.c"
 #include "func/initw.c"
 #include "func/readtext.c"
+#include "func/runtime.c"
 #include "func/test_text.c"
 
 
