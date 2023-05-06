@@ -219,7 +219,6 @@ void move_cur(int dir, int *p_y, int *p_x, int *ana_stru){
 	refresh();
 }
 
-
 void analysis_text(char *text,int *ana_stru){
 	int ana_stru_numb=0;
 	int i=0;
