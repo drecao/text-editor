@@ -2,18 +2,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-//define utrl int LINES_EXP
-int LINES_EXP;
-
-//define functions used
-void initw();
-char * readtext(char *name,int *numb);
-int test_text(char *name);
-void commond(int *p_y,int *p_x, int *ana_stru);
-void display(char *text, char *name);
-void run_time(int *p_y,int *p_x, char *text,int *ana_stru);
-void move_cur(int dir, int *p_y, int *p_x, int *ana_stru);
-void analysis_text(char *text,int *ana_stru);
+#include "def.h"
+#include "analysis_text.c"
 
 //main function
 int main(int argc, char *argv[]){
@@ -217,51 +207,4 @@ void move_cur(int dir, int *p_y, int *p_x, int *ana_stru){
 	}
 	move(*p_y,*p_x);
 	refresh();
-}
-
-void analysis_text(char *text,int *ana_stru){
-	int ana_stru_numb=0;
-	int i=0;
-	int text_num=0;
-	char c;
-	c=*(text+text_num);
-	for(; ana_stru_numb<LINES_EXP;){
-		if(c=='\n'){
-			*(ana_stru+ana_stru_numb)=i;
-			ana_stru_numb=ana_stru_numb+1;
-			i=0;
-			text_num=text_num+1;
-			c=*(text+text_num);
-		}
-		else if(i==(COLS-1)){
-			*(ana_stru+ana_stru_numb)=i+1;
-			ana_stru_numb=ana_stru_numb+1;
-			i=0;
-			text_num=text_num+1;
-			c=*(text+text_num);
-		}
-		else if(c=='\0'){
-			if(*(text+text_num-1)=='\n'){
-			*(ana_stru+ana_stru_numb)=-1;
-			ana_stru_numb=ana_stru_numb+1;
-			for(;ana_stru_numb<LINES_EXP;){
-				*(ana_stru+ana_stru_numb)=-1;
-				ana_stru_numb=ana_stru_numb+1;
-			}
-			}
-			else{
-				*(ana_stru+ana_stru_numb)=i;
-				ana_stru_numb=ana_stru_numb+1;
-				for(;ana_stru_numb<LINES_EXP;){
-					*(ana_stru+ana_stru_numb)=-1;
-					ana_stru_numb=ana_stru_numb+1;
-				}
-			}
-		}
-		else {
-		i=i+1;
-		text_num=text_num+1;
-		c=*(text+text_num);
-		}
-	}
 }
