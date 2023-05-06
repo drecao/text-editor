@@ -60,3 +60,7 @@ void commond(int *p_y,int *p_x, int *ana_stru){
 
 	}
 }
+
+void run_time(int *p_y, int *p_x, char *text,int *ana_stru){
+	commond(p_y,p_x,ana_stru);
+}

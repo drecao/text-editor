@@ -1,5 +1,6 @@
 #include "def.h"
 #include "analysis_text.c"
+#include "commond.c"
 
 //main function
 int main(int argc, char *argv[]){
@@ -115,9 +116,7 @@ int test_text(char *name){
 	}
 }
 
-void run_time(int *p_y, int *p_x, char *text,int *ana_stru){
-	commond(p_y,p_x,ana_stru);
-}
+
 
 void move_cur(int dir, int *p_y, int *p_x, int *ana_stru){
 	if(dir==1 && (*p_y)!=0){
