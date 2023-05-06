@@ -1,6 +1,6 @@
 #include "def.h"
 #include "analysis_text.c"
-#include "commond.c"
+#include "runtime.c"
 
 //main function
 int main(int argc, char *argv[]){
