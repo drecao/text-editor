@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-long unsigned int fsize(FILE *f);
+long unsigned int fsize(char *name);
 void mv_file(FILE *f,long unsigned int number,long unsigned int last,char insert);
 
 int main(int argc, char *argv[]){
@@ -16,7 +16,7 @@ int main(int argc, char *argv[]){
 	if(insert=='Q'){
 		break;
 	}
-	last=fsize(f);
+	last=fsize(name);
 	mv_file(f,number,last,insert);
 	printf("last:%lu\nnumber:%lu",last,number);
 	}
@@ -24,15 +24,18 @@ int main(int argc, char *argv[]){
 	return 0;
 }
 
-long unsigned int fsize(FILE *f){
+long unsigned int fsize(char *name){
+	FILE *f;
 	int a;
 	long unsigned int num=0;
+	f=fopen(name,"r+");
 	a=getc(f);
 	printf("fsize\n");
 	for(;a!=EOF;){
 		num++;
 		a=getc(f);
 	}
+	fclose(f);
 	return num;
 }
 
