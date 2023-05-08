@@ -50,7 +50,7 @@ void mv_file(FILE *f,long unsigned int number,long unsigned int last,char insert
 		a=getc(f);
 		location++;
 		fsetpos(f,p_lo);
-		fprintf(f,"%c",a);
+		fputc(a,f);
 		location=location-2;
 	}
 	location=number;
