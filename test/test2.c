@@ -9,21 +9,26 @@ int main(int argc, char *argv[]){
 	long unsigned int last;
 	long unsigned int number;
 	char insert;
-	printf("input number:\n");
-	scanf("%lu",&number);
-	printf("input char:\n");
-	insert=getchar();
 	f=fopen(name,"r+");
+	for(;;){
+	printf("input number and char:\n");
+	scanf("%lu %c",&number,&insert);
+	if(insert=='Q'){
+		break;
+	}
 	last=fsize(f);
 	mv_file(f,number,last,insert);
+	printf("last:%lu\nnumber:%lu",last,number);
+	}
 	fclose(f);
 	return 0;
 }
 
 long unsigned int fsize(FILE *f){
-	char a;
+	int a;
 	long unsigned int num=0;
 	a=getc(f);
+	printf("fsize\n");
 	for(;a!=EOF;){
 		num++;
 		a=getc(f);
@@ -35,11 +40,15 @@ void mv_file(FILE *f,long unsigned int number,long unsigned int last,char insert
 	char a;
 	fpos_t location=last-1;
 	fpos_t *p_lo=&location;
+	printf("mv_file\n");
 	for(;location>=number;){
+		printf("location:%lu\n",location);
 		fsetpos(f,p_lo);
 		a=getc(f);
+		location++;
+		fsetpos(f,p_lo);
 		fprintf(f,"%c",a);
-		location --;
+		location=location-2;
 	}
 	location=number;
 	fsetpos(f,p_lo);
