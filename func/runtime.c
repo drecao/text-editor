@@ -85,6 +85,9 @@ void move_cur(int dir, int *p_y, int *p_x, int *ana_stru){
 		if(*(ana_stru+(*p_y))<=*p_x){
 			*p_x=*p_x-1;
 		}
+		else{
+			TEXT_LOCATION++;
+		}
 	}
 	move(*p_y,*p_x);
 	refresh();

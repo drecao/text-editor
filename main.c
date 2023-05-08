@@ -16,6 +16,7 @@ int main(int argc, char *argv[]){
 	//init the curses windows
 	initw();
 	LINES_EXP=LINES-2;
+	TEXT_LOCATION=0;
 
 	//text analysis struct
 	int *ana_stru;
@@ -42,6 +43,7 @@ int main(int argc, char *argv[]){
 	analysis_text(text,ana_stru);
 	run_time(p_y,p_x,text,ana_stru);
 
+/*
 	//finish_test
 	num=i;
 	printf("Start here !!!\n");
@@ -57,7 +59,7 @@ int main(int argc, char *argv[]){
 		printf("%d ",*(text+i));
 	}
 	printf("\n");
-
+*/
 	//free the malloc_space
 	free(text);
 	free(ana_stru);

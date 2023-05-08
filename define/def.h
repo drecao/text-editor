@@ -5,6 +5,8 @@
 //define utrl int LINES_EXP
 int LINES_EXP;
 
+long unsigned int TEXT_LOCATION;
+
 //define functions used
 void initw();
 
